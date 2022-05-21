@@ -19,22 +19,13 @@ namespace _2048.Grid.Movement
 
         public IEnumerator<Point> GetEnumerator()
         {
-            return MovePositions();
+            return new GridStartPositionsEnumerator(_moveGridDirection,_gridSize);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return MovePositions();
+            return new GridStartPositionsEnumerator(_moveGridDirection, _gridSize);
         }
 
-        private IEnumerator<Point> MovePositions()
-        {
-            switch (_moveGridDirection)
-            {
-                case 1: return new MoveUpPositions(_gridSize);
-                default:
-                    throw new ArgumentException("Invalid movement direction!");
-            }
-        }
     }
 }
