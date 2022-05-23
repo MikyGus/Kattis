@@ -1,7 +1,9 @@
-﻿namespace _2048.Grid
+﻿using _2048.Grid.MoveDirection;
+
+namespace _2048.Grid
 {
     public interface IGridNavigator
     {
-        void MoveGridInDirection(int direction);
+        void MoveGridInDirection(IMoveDirection direction);
     }
 }

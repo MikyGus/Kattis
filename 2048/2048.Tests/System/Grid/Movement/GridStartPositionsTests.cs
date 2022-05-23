@@ -1,4 +1,5 @@
-﻿using _2048.Grid.Movement;
+﻿using _2048.Grid.MoveDirection;
+using _2048.Grid.Movement;
 using _2048.Tests.Fixtures;
 using FluentAssertions;
 using System.Drawing;
@@ -15,7 +16,8 @@ namespace _2048.Tests.System.Grid.Movement
             public void GivenMoveGridLeft_ShouldThenReturnCollectionOfPoint_1x3_To_3x0()
             {
                 // Arrange
-                GridStartPosition sut = new GridStartPosition(0, 4);
+                GridStartPosition sut = new GridStartPosition(
+                    new MoveDirectionLeft(4), 4);
                 // Act
                 // Assert
                 sut.Should().BeEquivalentTo<Point>(GridFixtures.CellArrayWhenGridLeft());
@@ -25,7 +27,8 @@ namespace _2048.Tests.System.Grid.Movement
             public void GivenMoveGridUp_ShouldThenReturnCollectionOfPoint_0x1_To_3x3()
             {
                 // Arrange
-                GridStartPosition sut = new GridStartPosition(1, 4);
+                GridStartPosition sut = new GridStartPosition(
+                    new MoveDirectionUp(4), 4);
                 // Act
                 // Assert
                 sut.Should().BeEquivalentTo<Point>(GridFixtures.CellArrayWhenGridUp());
@@ -35,7 +38,8 @@ namespace _2048.Tests.System.Grid.Movement
             public void GivenMoveGridRight_ShouldThenReturnCollectionOfPoint_2x0_To_0x3()
             {
                 // Arrange
-                GridStartPosition sut = new GridStartPosition(2, 4);
+                GridStartPosition sut = new GridStartPosition(
+                    new MoveDirectionRight(4), 4);
                 // Act
                 // Assert
                 sut.Should().BeEquivalentTo<Point>(GridFixtures.CellArrayWhenGridRight());
@@ -45,7 +49,8 @@ namespace _2048.Tests.System.Grid.Movement
             public void GivenMoveGridDown_ShouldThenReturnCollectionOfPoint_3x2_To_0x0()
             {
                 // Arrange
-                GridStartPosition sut = new GridStartPosition(3, 4);
+                GridStartPosition sut = new GridStartPosition(
+                    new MoveDirectionDown(4), 4);
                 // Act
                 // Assert
                 sut.Should().BeEquivalentTo<Point>(GridFixtures.CellArrayWhenGridDown());
