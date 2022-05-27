@@ -1,5 +1,5 @@
-﻿using System;
-using System.Drawing;
+﻿using _2048.Numeric;
+using System;
 
 namespace _2048.Grid.MoveDirection
 {
@@ -11,11 +11,11 @@ namespace _2048.Grid.MoveDirection
         {
             _gridSize = gridSize;
         }
-        public Point Vector => new Point(0,-1);
+        public GridPosition Vector => new GridPosition(0, -1);
 
-        public Point StartPosition(int positionIndex)
+        public GridPosition StartPosition(int positionIndex)
         {
-            Point p = new Point();
+            GridPosition p = new GridPosition();
             _ = Math.DivRem(positionIndex, _gridSize, out int remainder);
             p.X = remainder;
             p.Y = (int)(1 + Math.Floor(positionIndex / (double)_gridSize));

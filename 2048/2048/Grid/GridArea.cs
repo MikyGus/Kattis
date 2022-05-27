@@ -1,5 +1,5 @@
-﻿using System;
-using System.Drawing;
+﻿using _2048.Numeric;
+using System;
 
 namespace _2048.Grid
 {
@@ -10,7 +10,7 @@ namespace _2048.Grid
         private readonly int _gridSize;
 
         public int[,] Grid => _grid;
-        public int GridSize => _gridSize; 
+        public int GridSize => _gridSize;
         public GridArea(int[,] grid)
         {
             _grid = grid;
@@ -18,7 +18,7 @@ namespace _2048.Grid
             _gridMerged = new int[_gridSize, _gridSize];
         }
 
-        public bool CanMoveHere(Point originPosition, Point targetPosition)
+        public bool CanMoveHere(GridPosition originPosition, GridPosition targetPosition)
         {
             if (IsInGrid(originPosition) == false || IsInGrid(targetPosition) == false)
             {
@@ -34,7 +34,7 @@ namespace _2048.Grid
             {
                 return true;
             }
-            if (_gridMerged[targetPosition.X,targetPosition.Y] == 1)
+            if (_gridMerged[targetPosition.X, targetPosition.Y] == 1)
             {
                 return false;
             }
@@ -42,19 +42,19 @@ namespace _2048.Grid
 
         }
 
-        public void MoveToPosition(Point originPosition, Point targetPosition)
+        public void MoveToPosition(GridPosition originPosition, GridPosition targetPosition)
         {
-            int OriginValue = _grid[originPosition.X,originPosition.Y];
-            int TargetValue = _grid[targetPosition.X,targetPosition.Y];
+            int OriginValue = _grid[originPosition.X, originPosition.Y];
+            int TargetValue = _grid[targetPosition.X, targetPosition.Y];
 
-            _grid[targetPosition.X,targetPosition.Y] = OriginValue + TargetValue;
+            _grid[targetPosition.X, targetPosition.Y] = OriginValue + TargetValue;
             _grid[originPosition.X, originPosition.Y] = 0;
 
             if (OriginValue == TargetValue)
             {
                 _gridMerged[targetPosition.X, targetPosition.Y] = 1;
             }
-            
+
         }
 
         public void NewRound()
@@ -62,11 +62,11 @@ namespace _2048.Grid
             throw new NotImplementedException();
         }
 
-        private bool IsInGrid(Point pointToCheck)
+        public bool IsInGrid(GridPosition pointToCheck)
         {
-            if (pointToCheck.X < 0 || 
-                pointToCheck.Y < 0 || 
-                pointToCheck.X > (_gridSize - 1) || 
+            if (pointToCheck.X < 0 ||
+                pointToCheck.Y < 0 ||
+                pointToCheck.X > (_gridSize - 1) ||
                 pointToCheck.Y > (_gridSize - 1))
             {
                 return false;

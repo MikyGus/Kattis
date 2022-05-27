@@ -1,8 +1,8 @@
 ﻿using _2048.Grid.MoveDirection;
 using _2048.Grid.Movement;
+using _2048.Numeric;
 using _2048.Tests.Fixtures;
 using FluentAssertions;
-using System.Drawing;
 using Xunit;
 
 namespace _2048.Tests.System.Grid.Movement
@@ -20,7 +20,7 @@ namespace _2048.Tests.System.Grid.Movement
                     new MoveDirectionLeft(4), 4);
                 // Act
                 // Assert
-                sut.Should().BeEquivalentTo<Point>(GridFixtures.CellArrayWhenGridLeft());
+                sut.Should().BeEquivalentTo<GridPosition>(GridFixtures.CellArrayWhenGridLeft());
             }
 
             [Fact]
@@ -31,7 +31,7 @@ namespace _2048.Tests.System.Grid.Movement
                     new MoveDirectionUp(4), 4);
                 // Act
                 // Assert
-                sut.Should().BeEquivalentTo<Point>(GridFixtures.CellArrayWhenGridUp());
+                sut.Should().BeEquivalentTo<GridPosition>(GridFixtures.CellArrayWhenGridUp());
             }
 
             [Fact]
@@ -42,7 +42,7 @@ namespace _2048.Tests.System.Grid.Movement
                     new MoveDirectionRight(4), 4);
                 // Act
                 // Assert
-                sut.Should().BeEquivalentTo<Point>(GridFixtures.CellArrayWhenGridRight());
+                sut.Should().BeEquivalentTo<GridPosition>(GridFixtures.CellArrayWhenGridRight());
             }
 
             [Fact]
@@ -53,7 +53,7 @@ namespace _2048.Tests.System.Grid.Movement
                     new MoveDirectionDown(4), 4);
                 // Act
                 // Assert
-                sut.Should().BeEquivalentTo<Point>(GridFixtures.CellArrayWhenGridDown());
+                sut.Should().BeEquivalentTo<GridPosition>(GridFixtures.CellArrayWhenGridDown());
             }
 
 

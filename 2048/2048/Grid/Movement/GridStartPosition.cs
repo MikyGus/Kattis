@@ -1,13 +1,11 @@
 ﻿using _2048.Grid.MoveDirection;
-using System;
+using _2048.Numeric;
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Text;
 
 namespace _2048.Grid.Movement
 {
-    public class GridStartPosition : IEnumerable<Point>
+    public class GridStartPosition : IEnumerable<GridPosition>
     {
         private readonly IMoveDirection _moveGridDirection;
         private readonly int _gridSize;
@@ -18,9 +16,9 @@ namespace _2048.Grid.Movement
             _gridSize = gridSize;
         }
 
-        public IEnumerator<Point> GetEnumerator()
+        public IEnumerator<GridPosition> GetEnumerator()
         {
-            return new GridStartPositionsEnumerator(_moveGridDirection,_gridSize);
+            return new GridStartPositionsEnumerator(_moveGridDirection, _gridSize);
         }
 
         IEnumerator IEnumerable.GetEnumerator()

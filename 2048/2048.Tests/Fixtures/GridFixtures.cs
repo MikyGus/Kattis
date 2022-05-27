@@ -1,4 +1,4 @@
-﻿using System.Drawing;
+﻿using _2048.Numeric;
 
 namespace _2048.Tests.Fixtures
 {
@@ -27,87 +27,87 @@ namespace _2048.Tests.Fixtures
             };
         }
 
-        public static Point[] CellArrayWhenGridUp()
+        public static GridPosition[] CellArrayWhenGridUp()
         {
-            return new Point[]
+            return new GridPosition[]
                 {
-                    new Point(0, 1),
-                    new Point(1, 1),
-                    new Point(2, 1),
-                    new Point(3, 1),
+                    new GridPosition(0, 1),
+                    new GridPosition(1, 1),
+                    new GridPosition(2, 1),
+                    new GridPosition(3, 1),
 
-                    new Point(0, 2),
-                    new Point(1, 2),
-                    new Point(2, 2),
-                    new Point(3, 2),
+                    new GridPosition(0, 2),
+                    new GridPosition(1, 2),
+                    new GridPosition(2, 2),
+                    new GridPosition(3, 2),
 
-                    new Point(0, 3),
-                    new Point(1, 3),
-                    new Point(2, 3),
-                    new Point(3, 3),
+                    new GridPosition(0, 3),
+                    new GridPosition(1, 3),
+                    new GridPosition(2, 3),
+                    new GridPosition(3, 3),
                 };
         }
 
-        public static Point[] CellArrayWhenGridLeft()
+        public static GridPosition[] CellArrayWhenGridLeft()
         {
-            return new Point[]
+            return new GridPosition[]
                 {
-                    new Point(1, 3),
-                    new Point(1, 2),
-                    new Point(1, 1),
-                    new Point(1, 0),
+                    new GridPosition(1, 3),
+                    new GridPosition(1, 2),
+                    new GridPosition(1, 1),
+                    new GridPosition(1, 0),
 
-                    new Point(2, 3),
-                    new Point(2, 2),
-                    new Point(2, 1),
-                    new Point(2, 0),
+                    new GridPosition(2, 3),
+                    new GridPosition(2, 2),
+                    new GridPosition(2, 1),
+                    new GridPosition(2, 0),
 
-                    new Point(3, 3),
-                    new Point(3, 2),
-                    new Point(3, 1),
-                    new Point(3, 0),
+                    new GridPosition(3, 3),
+                    new GridPosition(3, 2),
+                    new GridPosition(3, 1),
+                    new GridPosition(3, 0),
                 };
         }
 
-        public static Point[] CellArrayWhenGridRight()
+        public static GridPosition[] CellArrayWhenGridRight()
         {
-            return new Point[]
+            return new GridPosition[]
                 {
-                    new Point(2, 0),
-                    new Point(2, 1),
-                    new Point(2, 2),
-                    new Point(2, 3),
+                    new GridPosition(2, 0),
+                    new GridPosition(2, 1),
+                    new GridPosition(2, 2),
+                    new GridPosition(2, 3),
 
-                    new Point(1, 0),
-                    new Point(1, 1),
-                    new Point(1, 2),
-                    new Point(1, 3),
+                    new GridPosition(1, 0),
+                    new GridPosition(1, 1),
+                    new GridPosition(1, 2),
+                    new GridPosition(1, 3),
 
-                    new Point(0, 0),
-                    new Point(0, 1),
-                    new Point(0, 2),
-                    new Point(0, 3),
+                    new GridPosition(0, 0),
+                    new GridPosition(0, 1),
+                    new GridPosition(0, 2),
+                    new GridPosition(0, 3),
                 };
         }
 
-        public static Point[] CellArrayWhenGridDown()
+        public static GridPosition[] CellArrayWhenGridDown()
         {
-            return new Point[]
+            return new GridPosition[]
                 {
-                    new Point(3, 2),
-                    new Point(2, 2),
-                    new Point(1, 2),
-                    new Point(0, 2),
+                    new GridPosition(3, 2),
+                    new GridPosition(2, 2),
+                    new GridPosition(1, 2),
+                    new GridPosition(0, 2),
 
-                    new Point(3, 1),
-                    new Point(2, 1),
-                    new Point(1, 1),
-                    new Point(0, 1),
-                                        
-                    new Point(3, 0),
-                    new Point(2, 0),
-                    new Point(1, 0),
-                    new Point(0, 0),
+                    new GridPosition(3, 1),
+                    new GridPosition(2, 1),
+                    new GridPosition(1, 1),
+                    new GridPosition(0, 1),
+
+                    new GridPosition(3, 0),
+                    new GridPosition(2, 0),
+                    new GridPosition(1, 0),
+                    new GridPosition(0, 0),
                 };
         }
 

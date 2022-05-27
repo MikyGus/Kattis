@@ -1,6 +1,5 @@
 ﻿using _2048.Grid.MoveDirection;
-using _2048.Grid.Movement;
-using System.Drawing;
+using _2048.Numeric;
 
 namespace _2048.Grid
 {
@@ -15,15 +14,21 @@ namespace _2048.Grid
 
         public void MoveGridInDirection(IMoveDirection direction)
         {
-            GridStartPosition gridStartPositions = new GridStartPosition(direction,_gridArea.GridSize);
-            foreach (var position in gridStartPositions)
+            for (int i = 0; i < NumberOfStartPositions(_gridArea.GridSize); i++)
             {
-                System.Console.WriteLine(position);
+                GridPosition startPosition = direction.StartPosition(i);
+                GridPosition checkPosition = startPosition + direction.Vector;
+                while (_gridArea.IsInGrid(startPosition))
+                {
 
-                // If up
-                Point moveVector = new Point(0, -1);
+                }
 
             }
+        }
+
+        private int NumberOfStartPositions(int gridSize)
+        {
+            return (gridSize * gridSize) - gridSize;
         }
 
         //private void FurtherstPositionCellValueCanMove(Point startPosition, )

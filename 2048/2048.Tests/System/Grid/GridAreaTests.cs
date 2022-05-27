@@ -1,7 +1,7 @@
 ﻿using _2048.Grid;
+using _2048.Numeric;
 using _2048.Tests.Fixtures;
 using FluentAssertions;
-using System.Drawing;
 using Xunit;
 
 namespace _2048.Tests.System.Grid
@@ -19,10 +19,10 @@ namespace _2048.Tests.System.Grid
         public void CanMoveHere_ShouldReturnFalse_WhenPositionsIsOutsideGrid()
         {
             // Arrange
-            Point origin = new Point(0,0);
-            Point target = new Point(5,5);
+            GridPosition origin = new GridPosition(0, 0);
+            GridPosition target = new GridPosition(5, 5);
             // Act
-            bool result =_sut.CanMoveHere(origin, target);
+            bool result = _sut.CanMoveHere(origin, target);
             // Assert
             result.Should().BeFalse();
         }
@@ -32,8 +32,8 @@ namespace _2048.Tests.System.Grid
         public void CanMoveHere_ShouldReturnFalse_WhenValuesAreDifferent()
         {
             // Arrange
-            Point origin = new Point(0,0);
-            Point target = new Point(1,1);
+            GridPosition origin = new GridPosition(0, 0);
+            GridPosition target = new GridPosition(1, 1);
             // Act
             bool result = _sut.CanMoveHere(origin, target);
             // Assert
@@ -45,8 +45,8 @@ namespace _2048.Tests.System.Grid
         public void CanMoveHere_ShouldReturnFalse_WhenOriginValueIsZero()
         {
             // Arrange
-            Point origin = new Point(1, 0);
-            Point target = new Point(1, 1);
+            GridPosition origin = new GridPosition(1, 0);
+            GridPosition target = new GridPosition(1, 1);
             // Act
             bool result = _sut.CanMoveHere(origin, target);
             // Assert
@@ -58,8 +58,8 @@ namespace _2048.Tests.System.Grid
         public void CanMoveHere_ShouldReturnTrue_WhenTargetValueIsZero()
         {
             // Arrange
-            Point origin = new Point(1, 1);
-            Point target = new Point(1, 0);
+            GridPosition origin = new GridPosition(1, 1);
+            GridPosition target = new GridPosition(1, 0);
             // Act
             bool result = _sut.CanMoveHere(origin, target);
             // Assert
@@ -71,9 +71,9 @@ namespace _2048.Tests.System.Grid
         public void CanMoveHere_ShouldReturnFalse_WhenTargetCellAllreadyHaveMerged()
         {
             // Arrange
-            _sut.MoveToPosition(new Point(0,1), new Point(0,0));
-            Point origin = new Point(0, 2);
-            Point target = new Point(0, 0);
+            _sut.MoveToPosition(new GridPosition(0, 1), new GridPosition(0, 0));
+            GridPosition origin = new GridPosition(0, 2);
+            GridPosition target = new GridPosition(0, 0);
             // Act
             bool result = _sut.CanMoveHere(origin, target);
             // Assert
@@ -85,8 +85,8 @@ namespace _2048.Tests.System.Grid
         public void MoveToPosition_ShouldMoveCellValueIn1x1To1x0_WhenCalledToMoveCell1x1To1x0()
         {
             // Arrange
-            Point origin = new Point(1, 1);
-            Point target = new Point(1, 0);
+            GridPosition origin = new GridPosition(1, 1);
+            GridPosition target = new GridPosition(1, 0);
             // Act
             _sut.MoveToPosition(origin, target);
             // Assert
