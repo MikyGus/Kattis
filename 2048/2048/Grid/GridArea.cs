@@ -24,26 +24,27 @@ namespace _2048.Grid
             {
                 return false;
             }
-            int originValue = _grid[originPosition.X, originPosition.Y];
-            int targetValue = _grid[targetPosition.X, targetPosition.Y];
-            if (originValue == 0)
+            else if (PositionIsEmpty(originPosition))
             {
                 return false;
             }
-            if (targetValue == 0)
+            else if (PositionIsEmpty(targetPosition))
             {
                 return true;
             }
-            if (_gridMerged[targetPosition.X, targetPosition.Y] == 1)
+            else if (PositionIsMerged(targetPosition))
             {
                 return false;
             }
-            return originValue == targetValue;
-
+            return PositionsHaveEqualValue(originPosition, targetPosition);
         }
 
         public void MoveToPosition(GridPosition originPosition, GridPosition targetPosition)
         {
+            if (IsInGrid(originPosition) == false || IsInGrid(targetPosition) == false)
+            {
+                return;
+            }
             int OriginValue = _grid[originPosition.X, originPosition.Y];
             int TargetValue = _grid[targetPosition.X, targetPosition.Y];
 
@@ -75,61 +76,26 @@ namespace _2048.Grid
         }
 
 
-        //private int[,] _grid;
-        //private int[,] _gridMerged;
+        private bool PositionIsEmpty(GridPosition gridPosition)
+        {
+            return _grid[gridPosition.X, gridPosition.Y] == 0;
+        }
 
-        //private int _gridSize;
-        //public int GridSize => _gridSize;
-        //public int[,] Grid => _grid;
+        private bool PositionIsMerged(GridPosition gridPosition)
+        {
+            return _gridMerged[gridPosition.X, gridPosition.Y] == 1;
+        }
 
-        //public GridArea(int[,] grid)
-        //{
-        //    _grid = grid;
-        //    _gridSize = grid.GetUpperBound(0) + 1;
-        //    _gridMerged = new int[_gridSize, _gridSize];
-        //}
+        private bool PositionsHaveEqualValue(GridPosition position1, GridPosition position2)
+        {
+            return _grid[position1.X, position1.Y] == _grid[position2.X, position2.Y];
+        }
 
-        //private void NewRound()
-        //{
-        //    Array.Clear(_gridMerged, 0, _gridSize);
-        //}
-        //private void MarkCellAsMerged(Point cell)
-        //{
-        //    _gridMerged[cell.X, cell.Y] = 1;
-        //}
-        //private bool IsCellMerged(Point cell)
-        //{
-        //    return _gridMerged[cell.X, cell.Y] == 1;
-        //}
-
-        //public bool MoveCell(Point origin, Point target)
-        //{
-        //    int originCellValue = _grid[origin.X, origin.Y];
-        //    int targetCellValue = _grid[target.X, target.Y];
-        //    if (CanMergeCells(origin,target))
-        //    {
-        //        _grid[origin.X, origin.Y] = 0;
-        //        _grid[target.X, target.Y] = originCellValue + targetCellValue;
-        //        MarkCellAsMerged(target);
-        //        return true;
-        //    }
-        //    return false;
-        //}
-
-
-
-        //public bool CanMergeCells(Point sourceCell, Point targetCell)
-        //{
-        //    if (_grid[targetCell.X, targetCell.Y] == 0)
-        //    {
-        //        return true;
-        //    }
-        //    if (IsCellMerged(targetCell) == false && _grid[sourceCell.X, sourceCell.Y] == _grid[targetCell.X, targetCell.Y])
-        //    {
-        //        return true;
-        //    }
-        //    return false;
-        //}
-
+        public bool CanMerge(GridPosition originPosition, GridPosition targetPosition)
+        {
+            return PositionsHaveEqualValue(originPosition, targetPosition) &&
+                PositionIsMerged(targetPosition) == false &&
+                PositionIsEmpty(targetPosition) == false;
+        }
     }
 }

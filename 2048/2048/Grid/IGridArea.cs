@@ -10,5 +10,6 @@ namespace _2048.Grid
         bool CanMoveHere(GridPosition originPosition, GridPosition targetPosition);
         void MoveToPosition(GridPosition originPosition, GridPosition targetPosition);
         bool IsInGrid(GridPosition position);
+        bool CanMerge(GridPosition originPosition, GridPosition targetPosition);
     }
 }

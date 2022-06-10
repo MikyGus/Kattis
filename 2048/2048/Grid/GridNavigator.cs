@@ -3,7 +3,7 @@ using _2048.Numeric;
 
 namespace _2048.Grid
 {
-    internal class GridNavigator : IGridNavigator
+    public class GridNavigator : IGridNavigator
     {
         private readonly IGridArea _gridArea;
 
@@ -14,15 +14,15 @@ namespace _2048.Grid
 
         public void MoveGridInDirection(IMoveDirection direction)
         {
-            for (int i = 0; i < NumberOfStartPositions(_gridArea.GridSize); i++)
+            int numberOfStartPositions = NumberOfStartPositions(_gridArea.GridSize);
+            for (int i = 0; i < numberOfStartPositions; i++)
             {
                 GridPosition startPosition = direction.StartPosition(i);
-                GridPosition checkPosition = startPosition + direction.Vector;
-                while (_gridArea.IsInGrid(startPosition))
+                GridPosition moveTo = FindMoveToPosition(startPosition, direction);
+                if (moveTo.IsEqualTo(startPosition) == false)
                 {
-
+                    _gridArea.MoveToPosition(direction.StartPosition(i),moveTo);
                 }
-
             }
         }
 
@@ -31,6 +31,27 @@ namespace _2048.Grid
             return (gridSize * gridSize) - gridSize;
         }
 
-        //private void FurtherstPositionCellValueCanMove(Point startPosition, )
+
+        private GridPosition FindMoveToPosition(GridPosition startPosition, IMoveDirection direction)
+        {
+            int k = 1;
+            GridPosition lastOkPosition = startPosition;
+            GridPosition checkPosition = startPosition + direction.Vector;
+            while (_gridArea.CanMoveHere(startPosition, checkPosition))
+            {
+                if (_gridArea.CanMerge(startPosition,checkPosition))
+                {
+                    return checkPosition;
+                }
+                lastOkPosition = checkPosition;
+                checkPosition = startPosition + (direction.Vector * ++k);
+            }
+            return lastOkPosition;
+        }
+
+        public IGridArea GetGridArea()
+        {
+            return _gridArea;
+        }
     }
 }

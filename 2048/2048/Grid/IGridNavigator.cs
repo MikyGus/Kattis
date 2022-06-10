@@ -5,5 +5,6 @@ namespace _2048.Grid
     public interface IGridNavigator
     {
         void MoveGridInDirection(IMoveDirection direction);
+        IGridArea GetGridArea();
     }
 }

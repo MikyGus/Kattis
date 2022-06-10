@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace _2048.UserData.DataValidation
+﻿namespace _2048.UserData.DataValidation
 {
     public interface IDataValidation<T>
     {

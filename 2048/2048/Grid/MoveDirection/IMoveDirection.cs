@@ -4,7 +4,7 @@ namespace _2048.Grid.MoveDirection
 {
     public interface IMoveDirection
     {
-        public GridPosition Vector { get; }
-        public GridPosition StartPosition(int positionIndex);
+        GridPosition Vector { get; }
+        GridPosition StartPosition(int positionIndex);
     }
 }

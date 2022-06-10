@@ -1,7 +1,4 @@
 ﻿using _2048.UserData.DataValidation;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace _2048.UserData
 {

@@ -4,6 +4,7 @@ using _2048.UserData;
 using _2048.UserData.DataConvertion;
 using _2048.UserData.DataValidation;
 using _2048.UserData.InputReader;
+using _2048.UserData.OutputWriter;
 
 namespace _2048
 {
@@ -21,27 +22,14 @@ namespace _2048
             int moveInput = userInput.ReadSingleInput(directionValidation);
 
 
-
             IGridArea grid = new GridArea(gridArea);
             IMoveDirection moveDirection = MoveDirectionFactory.Create(moveInput, gridSize);
-            GridNavigator gridNavigator = new GridNavigator(grid);
+            IGridNavigator gridNavigator = new GridNavigator(grid);
             gridNavigator.MoveGridInDirection(moveDirection);
 
-            //IGridManager gridManager = new GridManager(grid);
 
-
-
-            //const int gridSize = 4;
-            //DataValidator validator = new DataValidator();
-            //___InputReader input = new ___InputReader(validator.IsValid2048Data);
-            //int[,] grid = input.ReadInputToGrid(gridSize);
-            //input.SetValidData(validator.IsValidDirection);
-            //int moveDirection = input.ReadInputToInt();
-
-            //GridManager gridManager = new GridManager(grid);
-            //gridManager.FindCellToMoveTo(new Point(1, 2), moveDirection);
+            IOutputWrite output = new ConsoleOutputWriter();
+            output.WriteData(gridNavigator.GetGridArea());
         }
-
-
     }
 }
